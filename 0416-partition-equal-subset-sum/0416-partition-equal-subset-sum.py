@@ -10,6 +10,7 @@ class Solution:
         for i in range(len(nums)):
             cursums = sums.copy()
             for s in sums:
+                if (s + nums[i]) == target: return True
                 cursums.add(s + nums[i])
             sums = cursums
         
