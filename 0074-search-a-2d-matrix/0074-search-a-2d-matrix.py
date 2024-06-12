@@ -11,7 +11,7 @@ class Solution:
             else:
                 break
         
-        if not (top <= bot): return False
+
 
         left, right = 0, cols-1
         while left <=right:
