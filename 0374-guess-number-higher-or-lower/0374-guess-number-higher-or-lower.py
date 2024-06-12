@@ -10,11 +10,11 @@ class Solution:
         l, h = 1, n
         while l <= h:
             m = (l+h)//2
-            if guess(m) == 1:
+            if guess(m) > 0:
                 l = m+1
-            elif guess(m) == -1:
+            elif guess(m) < 0:
                 h = m-1
-            elif guess(m) == 0:
+            else:
                 return m
 
         
