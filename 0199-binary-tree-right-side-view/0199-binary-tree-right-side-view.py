@@ -13,14 +13,31 @@ class Solution:
             queue.append(root)
             
         while len(queue) > 0:
-            level = []
+            res.append(queue[-1].val)
+            
             for i in range(len(queue)):
                 node = queue.popleft()
-                if node:
-                    level.append(node.val)
+                if node.left:
                     queue.append(node.left)
+                if node.right:
                     queue.append(node.right)
-            if level:
-                res.append(level[-1])
         return res
+     
+#         queue = deque()
+#         res =[]
+               
+#         if root:
+#             queue.append(root)
+            
+#         while len(queue) > 0:
+#             level = []
+#             for i in range(len(queue)):
+#                 node = queue.popleft()
+#                 if node:
+#                     level.append(node.val)
+#                     queue.append(node.left)
+#                     queue.append(node.right)
+#             if level:
+#                 res.append(level[-1])
+#         return res
                 
