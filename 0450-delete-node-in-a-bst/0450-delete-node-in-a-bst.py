@@ -19,16 +19,16 @@ class Solution:
         if key > root.val:
             root.right = self.deleteNode(root.right, key)
         elif key < root.val:
-            root.left = self.deleteNode(root.left, key)   
+            root.left = self.deleteNode(root.left, key)    
         else:
-            if not root.left:
-                return root.right
             if not root.right:
                 return root.left
+            elif not root.left:
+                return root.right
             else:
-                minleaf = findminNode(root.right)
-                root.val = minleaf.val
-                root.right = self.deleteNode(root.right, minleaf.val)
+                minleft = findminNode(root.right)
+                root.val = minleft.val
+                root.right = self.deleteNode(root.right, minleft.val)
         return root
-
-        
+                
+            
