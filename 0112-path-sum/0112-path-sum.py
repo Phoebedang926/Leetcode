@@ -11,13 +11,11 @@ class Solution:
                 return False
             cursum += root.val
             
-            if not root.left and not root.right and cursum == targetSum:
-                return True
-            if backtracking(root.left, cursum):
-                return True
-            if backtracking(root.right, cursum):
-                return True
-            return False
+            if not root.left and not root.right:
+                return cursum == targetSum
+            return backtracking(root.left, cursum) or backtracking(root.right, cursum)
+
+        
         return backtracking(root, 0)
                 
                 
