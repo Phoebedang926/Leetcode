@@ -11,8 +11,8 @@ class Solution:
                 return False
             cursum += root.val
             
-            if not root.left and not root.right and cursum == targetSum:
-                return True
+            if not root.left and not root.right:
+                return cursum == targetSum
             if backtracking(root.left, cursum):
                 return True
             if backtracking(root.right, cursum):
