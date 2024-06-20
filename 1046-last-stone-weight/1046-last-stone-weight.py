@@ -5,7 +5,7 @@ class Solution:
         while len(stones)>1:
             stone1 = heapq.heappop(stones)
             stone2 = heapq.heappop(stones)
-            newstone = -abs(stone1 -stone2)
+            newstone = stone1 -stone2
             if newstone !=0:
                 heapq.heappush(stones,newstone)
         if stones:
