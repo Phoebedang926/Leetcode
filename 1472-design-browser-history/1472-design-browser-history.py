@@ -7,15 +7,11 @@ class ListNode:
 class BrowserHistory:
 
     def __init__(self, homepage: str):
-        self.home = ListNode(homepage)   
-        self.last = ListNode(0)
-        self.cur = self.home
+        self.cur = ListNode(homepage)   
+
     def visit(self, url: str) -> None:
-        newpage = ListNode(url)
-        self.cur.next = newpage
-        newpage.prev = self.cur
-        newpage.next = self.last
-        self.last.prev = newpage   
+        newpage = ListNode(url, self.cur)
+        self.cur.next = newpage 
         self.cur = newpage
         
     def back(self, steps: int) -> str:
@@ -25,7 +21,7 @@ class BrowserHistory:
         return self.cur.val
             
     def forward(self, steps: int) -> str:
-        while steps > 0 and self.cur.next and self.cur.next!=self.last:
+        while steps > 0 and self.cur.next:
             self.cur = self.cur.next
             steps -=1   
         return self.cur.val
