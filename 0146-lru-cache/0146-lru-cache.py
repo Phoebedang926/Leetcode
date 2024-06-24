@@ -35,11 +35,9 @@ class LRUCache:
         
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            self.cache[key].val = value
             self.remove(self.cache[key])
-        else:
-            newnode = ListNode(key, value)
-            self.cache[key] = newnode
+        newnode = ListNode(key, value)
+        self.cache[key] = newnode
         self.insert(self.cache[key])        
         if len(self.cache) > self.cap:
             LRU = self.left.next
