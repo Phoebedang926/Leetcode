@@ -3,72 +3,66 @@ class ListNode:
     def __init__(self, val):
         self.val = val
         self.next = None
-        self.prev = None
+        self.prev  = None
+
 
 class MyLinkedList:
 
     def __init__(self):
-        self.left = ListNode(0)
-        self.right = ListNode(0)
-        self.left.next = self.right
-        self.right.prev = self.left       
-        
+        self.head = ListNode(0)
+        self.tail = ListNode(0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
 
     def get(self, index: int) -> int:
-        cur = self.left.next
-        while cur and index > 0:
-            cur = cur.next
-            index -= 1
-        if index == 0 and cur and cur != self.right:
-            return cur.val
+        cur = self.head.next
+        while cur and index >0:
+            cur  = cur.next
+            index -=1
+        if index == 0 and cur and cur != self.tail: 
+            return cur.val 
         return -1
-        
 
     def addAtHead(self, val: int) -> None:
-        newHead = ListNode(val)
-        head = self.left.next
-        
-        self.left.next = newHead
-        newHead.next = head
-        newHead.prev = self.left
-        head.prev = newHead
-        
+        nxtnode = self.head.next
+        newnode = ListNode(val)
+        self.head.next = newnode
+        newnode.prev = self.head
+        newnode.next = nxtnode
+        nxtnode.prev = newnode
 
     def addAtTail(self, val: int) -> None:
-        newTail = ListNode(val)
-        tail = self.right.prev
-        
-        self.right.prev = newTail
-        newTail.prev = tail
-        newTail.next = self.right
-        tail.next = newTail
-             
+        prevnode = self.tail.prev
+        newnode = ListNode(val)
+        self.tail.prev = newnode
+        newnode.next = self.tail
+        newnode.prev = prevnode
+        prevnode.next = newnode
 
-    def addAtIndex(self, index: int, val: int) -> None:        
-        cur = self.left.next
-        while cur and index > 0:
-            cur = cur.next
-            index -= 1
-        if index == 0 and cur:
-            newNode = ListNode(val)
-            prevNode = cur.prev
-        
-            cur.prev = newNode
-            newNode.prev = prevNode
-            newNode.next = cur
-            prevNode.next = newNode
-
-
+    def addAtIndex(self, index: int, val: int) -> None:  
+        cur = self.head.next
+        while cur and index >0:
+            cur  = cur.next
+            index -=1
+        if index  == 0 and cur: 
+            newnode = ListNode(val)
+            prevnode = cur.prev
+            cur.prev = newnode
+            newnode.next = cur
+            newnode.prev = prevnode
+            prevnode.next = newnode
 
     def deleteAtIndex(self, index: int) -> None:
-        cur = self.left.next
+        cur = self.head.next
         while cur and index > 0:
-            cur = cur.next
-            index -= 1
-        if index == 0 and cur and cur != self.right:
-            prevNode, nextNode = cur.prev, cur.next
-            prevNode.next = nextNode
-            nextNode.prev = prevNode
+            cur  = cur.next
+            index -=1
+        if index == 0 and cur and cur != self.tail : 
+            prev = cur.prev
+            nxt = cur.next
+            prev.next = nxt
+            nxt.prev = prev
 
 
 
