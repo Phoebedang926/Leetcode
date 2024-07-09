@@ -4,8 +4,9 @@ class Solution:
         for n in nums:
             if n in hashmap:
                 return True
-            if n not in hashmap:
+            else:
                 hashmap[n] = 1
         return False
+            
 
         
